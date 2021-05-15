@@ -3,6 +3,8 @@ package com.valorant.api.config;
 import io.swagger.annotations.Api;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
@@ -40,5 +42,18 @@ public class Swagger {
                 "https://www.apache.org/licenses/LICENSE-2.0.html",
                 Collections.emptyList()
         );
+    }
+
+    @Bean //Cors Global
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**")                        //acceso al controlador global
+                        .allowedOrigins("*")                                //acceso a la ruta del cliente(frontend)
+                        .allowedMethods("GET", "POST", "PUT")               //acceso a los metodos http
+                ;
+            }
+        };
     }
 }
