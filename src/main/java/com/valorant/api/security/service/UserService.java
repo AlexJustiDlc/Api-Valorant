@@ -20,7 +20,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.text.ParseException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -68,7 +67,6 @@ public class UserService implements UserDetailsService {
         repository.save(user);
     }
 
-
     public String newUser(UserDto userDto){
         User user = new User();
         Set<RoleUser> roles = new HashSet<>();
@@ -96,7 +94,7 @@ public class UserService implements UserDetailsService {
         return new JwtDto(token);
     }
 
-    public JwtDto refresh(JwtDto jwtDto) throws ParseException {
+    public JwtDto refresh(JwtDto jwtDto){
         String token = jwtProvider.refreshToken(jwtDto);
         return new JwtDto(token);
     }

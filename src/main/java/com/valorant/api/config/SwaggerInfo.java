@@ -66,14 +66,14 @@ public class SwaggerInfo {
         return new ApiKey("JWT", "Authorization", "header");
     }
 
-    @Bean //Cors Global
+    @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**")                        //acceso al controlador global
-                        .allowedOrigins("*")                                //acceso a la ruta del cliente(frontend)
-                        .allowedMethods("GET", "POST", "PUT")               //acceso a los metodos http
+                registry.addMapping("/**")
+                        .allowedOrigins("*")
+                        .allowedMethods("GET", "POST", "PUT")
                 ;
             }
         };

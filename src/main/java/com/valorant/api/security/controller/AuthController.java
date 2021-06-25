@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.text.ParseException;
 
 @Api
 @RestController
@@ -40,7 +39,7 @@ public class AuthController {
     }
 
     @PostMapping("/refresh")
-    public ResponseEntity<JwtDto> refresh(@RequestBody JwtDto jwtDto) throws ParseException {
+    public ResponseEntity<JwtDto> refresh(@RequestBody JwtDto jwtDto){
         return ResponseEntity.status(HttpStatus.OK).body(service.refresh(jwtDto));
     }
 }

@@ -19,10 +19,6 @@ public class RoleUserService {
         return (List<RoleUser>) repository.findAll();
     }
 
-    public RoleUser getByName(String name){
-        return repository.findByName(name);
-    }
-
     public String create(RoleUser role){
         repository.save(role);
         return "Role \""+role.getName()+"\" Created.";
